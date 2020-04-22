@@ -11,8 +11,9 @@ services:
       MONGODB_DATABASE: rsvpdata
     networks:
       - rsvpnet
+
   web:
-    image: bbsonsin/rsvpapp:mooc
+    image: bbsonsin/rsvpapp:mooc_v1
     ports:
       - "5000:5000"
     environment:
