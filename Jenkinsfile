@@ -2,7 +2,7 @@ stage('Test Application')
 {
     node ('docker-jenkins-slave')
     {
-        git credentialsId: 'gitHub', url: "${GIT_REPO_URL}"
+        checkout scm
         sh 'chmod a+x ./runTest.sh'
         sh './runTest.sh'
     }
@@ -10,7 +10,7 @@ stage('Test Application')
 
 node('slave1')
 {
-    git credentialsId: 'gitHub', url: "${GIT_REPO_URL}"
+    checkout scm
     stage('Build Application Image')
     {
         withDockerServer([credentialsId: 'dd8fd66f-bcf2-4aff-962b-73a4f65756e9', uri: "tcp://${DOCKER_HOST}:2376"])
