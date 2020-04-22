@@ -11,7 +11,7 @@ stage('Test Application')
 node('slave1')
 {
     checkout scm
-    stage('Build Application Image')
+    stage('Build App Image')
     {
         withDockerServer([credentialsId: 'dd8fd66f-bcf2-4aff-962b-73a4f65756e9', uri: "tcp://${DOCKER_HOST}:2376"])
         {
